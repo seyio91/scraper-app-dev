@@ -1,0 +1,7 @@
+tabledata.txt
+init-db.sh
+db-bak*
+.env
+ncdc-scraper-client/nginx.conf.bak
+*/.gitlab-ci.yml
+*/node_modules

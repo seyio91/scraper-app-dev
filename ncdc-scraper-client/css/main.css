@@ -1,0 +1,185 @@
+body{
+    margin: 0;
+    height: auto;
+    background-color: #32383d;
+    color: white;
+}
+
+/* .summary-card {
+    max-width: 480px;
+} */
+
+.card {
+    background-color: #454c52;
+}
+
+header {
+    margin-bottom: 20px;
+    display: block;
+}
+
+#landing {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.label-counter {
+    text-align: center;
+    background-color: #f5f5f5;
+    color: #777;
+    font-size: 19px;
+    text-transform: uppercase;
+    line-height: 40px;
+    font-family: roboto condensed,sans-serif;
+}
+
+.content-inner {
+    min-height: 500px;
+    font-size: 15px;
+    color: #222;
+}
+
+#maincounter-wrap {
+    margin: auto;
+    text-align: center;
+    margin-top: 10px;
+    /* padding-top: 20px; */
+}
+
+#maincounter-wrap h1 {
+    margin: 0;
+    text-align: center;
+    /* padding-top: 20px; */
+}
+
+.maincounter-number {
+    font-weight: 700;
+    color: #696969;
+    font-size: 54px;
+}
+
+
+.analytics {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+table {
+    font-weight: 500;
+}
+
+table td:first-child {
+    font-weight: 700;
+}
+
+.recovery {
+    color:rgb(8, 180, 8);
+}
+
+.deaths {
+    color:rgba(255, 99, 132, 1);
+}
+
+.activecase {
+    color: rgba(245, 215, 110, 1);
+}
+
+.bg-recovery {
+    background-color:rgb(8, 180, 8);
+}
+
+.bg-fatality {
+    background-color:rgba(193, 4, 45, 0.7);
+}
+
+.table-dark td, .table-dark th, .table-dark thead th {
+    border-color: #32383d;;
+}
+
+.table-dark {
+    background-color: #454c52;
+}
+
+thead {
+    color: #b4b4b4;;
+}
+
+
+tbody {
+    font-weight: 600;
+}
+
+.dateselect {
+    padding: 5px;
+}
+
+.headinfo {
+    margin-bottom: 15px;
+}
+
+.data-label {
+    text-align: center;
+    padding: 10px 10px 0 10px;
+    font-weight: 600;
+}
+
+.main-title {
+    padding: 10px 10px 10px 0;
+    margin:  10px 10px 10px 0;
+}
+
+#timenav {
+    position: absolute;
+    right: 30px;
+}
+
+.btn-primary {
+    background-color: #1b95e0 !important;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.databody {
+    height: 100%;
+}
+
+marquee {
+    font-size: 14px;
+}
+
+#twitterimg{
+    width: 30x;
+    height: 30px;
+}
+
+#mailimg{
+    width: 30x;
+    height: 30px;   
+}
+
+
+/* responsive text queries */
+@media screen and (max-width: 992px) {
+    p,.btn,input,div,span,h4 {
+      font-size: 98%;
+    }
+    #iconimgtxt {
+        display: none;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    p,.btn,input,div,span,h4 {
+      font-size: 97%;
+    }
+
+    #iconimgtxt {
+        display: none;
+    }
+  }

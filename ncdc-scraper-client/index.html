@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <title>Nigeria Covid19 Statistics</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col headinfo">
+                <div class="card card mx-auto shadow p-1 mb-1 rounded-lg">
+                    <div class="card-body p-1">
+                        <h2 class="text-center">Nigeria COVID19 Statistics</h2>
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="col-lg-10 col-md-12 col-sm-12 mx-auto">
+                                    <p class="text-center">
+                                         Visit the <a href="https://covid19.ncdc.gov.ng/" target="_blank">NCDC WEBSITE</a> for more information on covid 19. Also Feel Free to leave some feedback on the twitter handle or email. 
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-2 float-xl-right">
+                                <div class="twitter">
+                                    <a href="https://twitter.com/intent/tweet?screen_name=seyio1187&ref_src=twsrc%5Etfw" target="_blank" class="btn btn-primary btn-sm"><img src="./images/Twitter_Social_Icon_Rounded_Square_Color.svg" alt="" id="twitterimg"><span class="font-weight-bold" id="iconimgtxt"> Tweet @</span></a>
+                                </div>
+                                <div class="mailto pt-1">
+                                    <a href="mailto:linuxcloudng@gmail.com" target="_blank" class="btn btn-danger btn-sm"><img src="./images/mail.svg" alt="" id="mailimg"><span class="font-weight-bold" id="iconimgtxt">Send Mail</span></a>
+                                </div>
+                            </div>
+                            <marquee class="mx-auto deaths font-weight-bold" width="80%" direction="left">Disclaimer!. Information compiled from the NCDC Site. Please Notify Seyi on any errors via twitter or email. Thanks.</marquee>
+                            <div class="col-12 col-xl-6 offset-xl-4" id="globalstats"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-5 col-xl-4 databody">
+
+                <div class="card mx-auto shadow p-3 mb-5 rounded-lg" id="summary-card">
+                    <div class="card-body">
+                        <div style="font-size:13px; color:#999; margin-top:5px; text-align:center">Last updated: <span id="update-time"></span> </div>
+                        <div id="maincounter-wrap">
+                            <h1>Coronavirus Cases:</h1>
+                            <div class="maincounter-number" >
+                            <span style="color:rgba(0, 181, 204, 0.7)">0</span>
+                            </div>
+                        </div>
+                        <div id="maincounter-wrap">
+                            <h1>Deaths #:</h1>
+                            <div class="maincounter-number" style="color:rgb(207, 30, 30) ">
+                            <span>0</span>
+                            </div>
+                        </div>
+                        <div id="maincounter-wrap">
+                            <h1>Recovered:</h1>
+                            <div class="maincounter-number" style="color:#8ACA2B ">
+                            <span>0</span>
+                            </div>
+                        </div>
+                        <div id="maincounter-wrap">
+                            <h1>Tests:</h1>
+                            <div class="maincounter-number">
+                            <span>0</span>
+                            </div>
+                        </div>
+                    <div style="margin-top:50px;"></div>
+                    </div>
+                  </div>
+
+
+                  <div class="card mx-auto shadow p-3 mb-5 rounded-lg" id="summary-card">
+
+                    <canvas id="myChart" class="analytics" style="display: none;"></canvas>
+       
+                    <div class="analytics">
+                        <canvas id="donut-total" style="display: none;"></canvas>
+                        <div class="data-label" id="tData-label"></div>
+                    </div>
+                    
+
+                    <div class="analytics">
+                        <canvas id="donut-outcome" style="display: none;"></canvas>
+                        <div class="data-label" id="outcomelabel"></div>
+                    </div>
+                    
+                  </div>
+            </div>
+
+
+            <div class="col-md-12 col-lg-7 col-xl-8 databody">
+                <div class="card mx-auto shadow p-3 mb-5 rounded-lg">
+                    <div id="timenav">
+                        <!-- redesign -->
+                        Date: 
+                        <a href="#" id="previousDate" class="dateselect">&#8249;&#8249;&#8249;</a>
+                        <input type="text" id="datepicker" readonly="readonly" class="rounded input-sm" style="width: 100px;">
+                        <a href="#" id="nextDate" class="dateselect">&#8250;&#8250;&#8250;</a>
+                        <a href="#" class="rounded btn btn-primary btn-sm" id="searchDate">Go</a>
+                    </div>
+
+
+                    <div class="card-body">
+                        <div class="main-title">
+                            <h1 class="card-title">Nigeria Covid19 Statistics</h1>
+                        </div>
+                        
+                            <div class="row font-weight-bold pt-1">
+                                <div class="col-sm-4 small">
+                                    Total Recovery Rate:
+                                    <div class="progress" id="recovery-progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                      </div>
+                                </div>
+                                <div class="col-sm-4 small">Total Fatality:
+                                    <div class="progress" id="fatality-rate">
+                                        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                      </div>
+                                </div>
+                                <div class="col-sm-2">Total Cases: 
+                                    <span id="progress-totalcases" style="color:rgba(0, 181, 204, 0.7)">
+                                    0
+                                    </span>
+                                </div>
+                                <div class="col-sm-2">Tests: <span id="progress-totaltest" style="color: #c2c2c2;">0</span></div>
+                            </div>
+                        
+                        
+                            <div class="card-body">
+                                <table id="stat-table" class="table table-dark table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>State</th>
+                                            <th>Total</th>
+                                            <th>New cases %</th>
+                                            <th>Discharged</th>
+                                            <th>Closed %</th>
+                                            <th>Deaths</th>
+                                            <th>New Deaths %</th>
+                                            <th>Active %</th>
+                                            <th>change %</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+        <script src="https://cdn.datatables.net/plug-ins/1.10.20/sorting/natural.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="./js/dashboard.js"></script>
+</body>
+</html>

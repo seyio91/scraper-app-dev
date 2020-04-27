@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    This  should show events page
+    <!-- <script src="js/main.js"></script> -->
+    <script>
+        function eventConnection (){
+            source = new EventSource('http://localhost:3000/stream');
+
+            source.onopen = function(e){
+                console.log('connection made');
+            }
+
+            source.addEventListener('event', function(evt){
+                const data = JSON.parse(evt.data)
+                console.log(data)
+            }, false)
+
+            source.onerror = function(e){
+                console.log(e)
+            }
+        }
+
+        eventConnection()
+
+        // if (windows.EventSource){
+        //     eventConnection()
+        // } else {
+        //     console.log('refresh page every minute to get updates')
+        // }
+    </script>
+</body>
+</html>

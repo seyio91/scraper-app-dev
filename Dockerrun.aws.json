@@ -1,0 +1,34 @@
+  
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "worker",
+        "image": "seyio/scraper-app",
+        "hostname": "worker",
+        "essential": false,
+        "memory": 128
+      },
+      {
+        "name": "app",
+        "image": "seyio/scraper-app",
+        "hostname": "app",
+        "essential": true,
+        "memory": 256
+      },
+      {
+        "name": "frontend",
+        "image": "seyio/scraper-proxy",
+        "hostname": "frontend",
+        "essential": false,
+        "portMappings": [
+          {
+            "hostPort": 80,
+            "containerPort": 80
+          }
+        ],
+        "links": ["app"],
+        "memory": 128
+      }
+    ]
+  }
