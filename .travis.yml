@@ -2,13 +2,10 @@ sudo: required
 services:
   - docker
 
-before_install:
-  - docker build -t seyio/scraper-app -f ./nodejs-ncdc-scraper/Dockerfile ./nodejs-ncdc-scraper
-  - docker build -t seyio/scraper-worker -f ./croncvd-worker/Dockerfile ./croncvd-worker
-  - docker build -t seyio/scraper-proxy -f ./ncdc-scraper-client/Dockerfile ./ncdc-scraper-client
-
 script:
-  - docker run -e CI=true docker-react-project npm run test -- --coverage
+    - docker build -t seyio/scraper-app -f ./nodejs-ncdc-scraper/Dockerfile ./nodejs-ncdc-scraper
+    - docker build -t seyio/scraper-worker -f ./croncvd-worker/Dockerfile ./croncvd-worker
+    - docker build -t seyio/scraper-proxy -f ./ncdc-scraper-client/Dockerfile ./ncdc-scraper-client
 
 after-success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
