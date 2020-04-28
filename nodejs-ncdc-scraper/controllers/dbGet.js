@@ -103,32 +103,6 @@ const getSummary = async(req, res) => {
     }
 }
 
-//get event by day
-// const getEventDay = async(req, res) => {
-//     try {
-//         day = req.params.date;
-//         if (!verifiedDay(day)){
-
-//             return res.redirect('/events');
-//         }
-
-//         let data = await client.get(`event-${day}`);
-//         if (!data){
-//             let dayQuery = `SELECT * FROM ticks WHERE date = '${day}';`
-//             const { rows } = await dbQuery(dayQuery);
-//             data = rows;
-//             await client.setex(`event-${day}`, 43200 , JSON.stringify(rows))
-//         } else {
-//             data = JSON.parse(data)
-//         }
-//         successMsg.data = data
-//         return res.status(status.success).json(successMsg)
-
-//     } catch (error) {
-//         errorMsg.error = error
-//         res.status(status.error).json(errorMsg)
-//     }
-// }
 
 
 const getEventDay = async( req, res ) => {
