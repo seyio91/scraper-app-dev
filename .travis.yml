@@ -4,7 +4,7 @@ services:
 
 before_install:
   - docker build -t seyio/scraper-app -f ./nodejs-ncdc-scraper/Dockerfile ./nodejs-ncdc-scraper
-  - docker build -t seyio/scraper-worker -f ./croncdv-worker/Dockerfile ./cron-cvd-worker
+  - docker build -t seyio/scraper-worker -f ./croncdv-worker/Dockerfile ./croncvd-worker
   - docker build -t seyio/scraper-proxy -f ./ncdc-scraper-client/Dockerfile ./ncdc-scraper-client
 
 script:
