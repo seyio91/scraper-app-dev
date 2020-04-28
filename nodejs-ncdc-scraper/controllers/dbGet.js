@@ -43,7 +43,7 @@ const dailyEvent = async( req, res ) => {
             let data = event.rows;
             let summary = sum.rows[0]
             overview = { summary, data }
-            await client.set('overview', JSON.stringify(overview));
+            await client.setex('overview', 34800, JSON.stringify(overview));
         } else {
             overview = JSON.parse(overview);
         }
@@ -111,7 +111,7 @@ const getEventDay = async( req, res ) => {
         day = req.params.date;
         if (!verifiedDay(day)){
 
-            return res.redirect('/events');
+            return res.redirect('/api/user/v1/events');
         }
 
         let overview = await client.get(`overview-${day}`);
@@ -123,7 +123,7 @@ const getEventDay = async( req, res ) => {
             let data = event.rows;
             let summary = sum.rows[0]
             overview = { summary, data }
-            await client.set(`overview-${day}`, JSON.stringify(overview));
+            await client.setex(`overview-${day}`, 34800, JSON.stringify(overview));
         } else {
             overview = JSON.parse(overview);
         }
