@@ -20,7 +20,7 @@ deploy:
     secure: $AWS_SECRET_KEY
   app: ncdc-covid-app
   env: NcdcCovidApp-env
-  region: us-west-2
+  region: eu-west-2
   bucket_name: elasticbeanstalk-eu-west-2-054747763671
   bucket_path: scraper-dev
   on:
