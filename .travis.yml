@@ -17,10 +17,10 @@ deploy:
   provider: elasticbeanstalk
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
-  app: ncdc-covid-app
-  env: NcdcCovidApp-env
+  app: public-ncdc-ebs
+  env: PublicNcdcEbs-env
   region: eu-west-2
   bucket_name: elasticbeanstalk-eu-west-2-054747763671
-  bucket_path: scraper-dev
+  bucket_path: scraper-prod
   on:
     branch: master
