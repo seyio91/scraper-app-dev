@@ -5,3 +5,4 @@ db-bak*
 ncdc-scraper-client/nginx.conf.bak
 */.gitlab-ci.yml
 */node_modules
+docker-compose.yml

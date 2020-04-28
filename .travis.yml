@@ -1,0 +1,30 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t seyio/scraper-app -f ./nodejs-ncdc-scraper/Dockerfile ./nodejs-ncdc-scraper
+  - docker build -t seyio/scraper-worker -f ./croncdv-worker/Dockerfile ./cron-cvd-worker
+  - docker build -t seyio/scraper-proxy -f ./ncdc-scraper-client/Dockerfile ./ncdc-scraper-client
+
+script:
+  - docker run -e CI=true docker-react-project npm run test -- --coverage
+
+after-success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push seyio/scraper-app
+  - docker push seyio/scraper-worker
+  - docker push seyio/scraper-proxy
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+  app: ncdc-covid-app
+  env: NcdcCovidApp-env
+  region: us-west-2
+  bucket_name: elasticbeanstalk-eu-west-2-054747763671
+  bucket_path: scraper-dev
+  on:
+    branch: master
