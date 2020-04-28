@@ -103,11 +103,11 @@ async function main(){
     
         // Fires if there was any change in data 
         if (dataChanges){
-            console.log('change occured, Sending Publish Event');
+            console.info('New Updates on NCDC, Firing Publish Event');
     
             let publishdata = { summary: summaryTotal, data: newView };
 
-            await client.setex('overview',86400, publishdata)
+            await client.setex('overview',86400, JSON.stringify(publishdata))
     
             await client.publish('UPDATED_VIEW', JSON.stringify(publishdata));
             
