@@ -129,10 +129,16 @@ tbody {
     opacity: 0.4;
 }
 
+.mainhead a {
+    color: white;
+    font-weight: bold;
+
+}
+
 a:hover {
     cursor: pointer;
     text-decoration: none;
-    color: white;
+    color: rgb(228, 228, 228);
 }
 
 .headinfo {
@@ -206,3 +212,9 @@ marquee {
         display: none;
     }
   }
+  @media screen and (max-width: 480px) {
+    .sm-hide {
+      display: none;
+    }
+
+}

@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Coronavirus, NCDC, Coronavirus (COVID-19),(COVID-19), Nigeria  " name="keywords">
+    <meta content="Nigeria Coronavirus (COVID-19) Statistics website. Providing updates on the Coronavirus Statistics in Nigeria" name="description">
+    <meta property="og:site_name" content="NG COVID19 STATS"/>
+    <meta property="og:title" content="LIVE NIGERIA COVID19 STATS UPDATE"/>
+    <meta property="og:url" content="https://ngcovid19.com.ng" />
+    <meta property="og:image" content="https://ngcovid19.com.ng/thumbnail.PNG"/>
+    <meta property="og:description" content="Gives updated stats on the CoronaVirus cases in Nigeria down to states, number of tests conducted, recovery rate, death rate."/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css">
@@ -10,6 +17,16 @@
     <link rel="stylesheet" href="./css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156544577-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-156544577-2');
+    </script>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <title>Nigeria Covid19 Statistics</title>
 </head>
 <body>
@@ -23,8 +40,8 @@
                         <div class="row">
                             <div class="col-10">
                                 <div class="col-lg-10 col-md-12 col-sm-12 mx-auto">
-                                    <p class="text-center">
-                                         Visit the <a href="https://covid19.ncdc.gov.ng/" target="_blank">NCDC WEBSITE</a> for more information on covid 19. Also Feel Free to leave some feedback on the twitter handle or email. 
+                                    <p class="text-center mainhead">
+                                         Visit the <a href="https://covid19.ncdc.gov.ng/" target="_blank">NCDC WEBSITE</a> for more COVID19 information. 
                                     </p>
                                 </div>
                             </div>
@@ -36,7 +53,7 @@
                                     <a href="mailto:linuxcloudng@gmail.com" target="_blank" class="btn btn-danger btn-sm"><img src="./images/mail.svg" alt="" id="mailimg"><span class="font-weight-bold" id="iconimgtxt">Send Mail</span></a>
                                 </div>
                             </div>
-                            <marquee class="mx-auto deaths font-weight-bold" width="80%" direction="left">Disclaimer!. Information compiled from the NCDC Site. Please Notify Seyi on any errors via twitter or email. Thanks.</marquee>
+                            <marquee class="mx-auto deaths font-weight-bold" width="80%" direction="left">Disclaimer!. Information compiled from the NCDC Site and values are sometimes reviewed and changed. Please Notify Seyi on any errors or Feedback via twitter or email. Thanks. </marquee>
                             <div class="col-12 col-xl-6 offset-xl-4" id="globalstats"></div>
                         </div>
                     </div>
@@ -103,9 +120,9 @@
                     <div id="timenav">
                         <!-- redesign -->
                         <span class="font-weight-bold">Date: </span>
-                        <a href="#" id="previousDate" class="dateselect">&#8249; Previous</a>
+                        <a href="#" id="previousDate" class="dateselect">&#8249;&#8249;&#8249;<span class="sm-hide"> Prev</span></a>
                         <input type="text" id="datepicker" readonly="readonly" class="rounded input-sm" style="width: 100px;">
-                        <a href="#" id="nextDate" class="dateselect">Next &#8250;</a>
+                        <a href="#" id="nextDate" class="dateselect"><span class="sm-hide">Next</span>&#8250;&#8250;&#8250;</a>
                         <a href="#" class="rounded btn btn-primary btn-sm" id="searchDate">Go</a>
                     </div>
 
