@@ -10,7 +10,7 @@ async function scraper(){
         return getData(page)
     } catch (error) {
         // This should be later turned to a retry
-        console.error(error)
+        console.error({error: error, message: `Error Download NCDC Page at ${moment()}`})
     }
 }
 
@@ -38,9 +38,9 @@ const getData = html => {
 
     $("table#custom1 > tbody > tr").each((index, elem)=>{
         const tdTags = $(elem).find("td");
-        summary['test'] = parseInt(val.join(""));
+        let value = numParse($(tdTags[1]).text().trim());
         if (index == 0){
-            test = $(tdTags[1]).text().trim();
+            let test = $(tdTags[1]).text().trim();
             let val = test.match(reg);
             summary['test'] = parseInt(val.join(""));
         } else if (index == 1){

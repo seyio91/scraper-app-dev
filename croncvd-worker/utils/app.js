@@ -91,20 +91,20 @@ async function main(){
     
     
         // check different between last Update and now. if its a new day and after 3am
-        if (diffTime > 0 && moment().isAfter(moment({ hour:3, minute: 0 }))){
+        // if (diffTime > 0 && moment().isAfter(moment({ hour:3, minute: 0 }))){
     
-            await redisSet(`baseline`, newView);
+        //     await redisSet(`baseline`, newView);
     
-            dbSave = lastRun.format('YYYY-MM-DD')
+        //     dbSave = lastRun.format('YYYY-MM-DD')
     
-            await updateSumTable(summaryTotal, dbSave);
+        //     await updateSumTable(summaryTotal, dbSave);
     
-            await updateTickTable(newView, dbSave);
+        //     await updateTickTable(newView, dbSave);
     
-            lastRun = currentTime.format();
+        //     lastRun = currentTime.format();
     
-            await client.set('lastimestamp', lastRun);
-        }
+        //     await client.set('lastimestamp', lastRun);
+        // }
     
     
         // Fires if there was any change in data 
@@ -125,7 +125,7 @@ async function main(){
         return { summary: summaryTotal, data: newView };
 
     } catch (error) {
-        console.error(error)
+        console.error({error: error, message: `Error Download NCDC Page at ${moment()}`})
     }
 }
 
