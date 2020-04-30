@@ -14,7 +14,7 @@ async function scraper(){
     }
 }
 
-const reg = /\d+/;
+const reg = /\d+/g;
 
 const getData = html => {
     const data = [];
@@ -38,7 +38,8 @@ const getData = html => {
 
     $("table#custom1 > tbody > tr").each((index, elem)=>{
         const tdTags = $(elem).find("td");
-        let value = numParse($(tdTags[1]).text().trim());
+        let val = test.match(reg);
+        summary['test'] = parseInt(val.join(""));
         if (index == 0){
             test = $(tdTags[1]).text().trim();
             summary['test'] = parseInt(test.match(reg))

@@ -44,6 +44,12 @@ async function main(){
                 changeDeaths > 0 ) {
                     // let System know there is a change for push updates later
                     dataChanges = true;
+
+                    // check for change
+                    currentData['totalcases'] = currentData['totalcases'] > baselineData['totalcases'] ? currentData['totalcases'] : baselineData['totalcases'];
+                    currentData['activecases'] = currentData['activecases'] > baselineData['activecases'] ? currentData['activecases'] : baselineData['activecases'];
+                    currentData['discharged'] = currentData['discharged'] > baselineData['discharged'] ? currentData['discharged'] : baselineData['discharged'];
+                    currentData['deaths'] = currentData['deaths'] > baselineData['deaths'] ? currentData['deaths'] : baselineData['deaths'];
     
                     currentData['changetotal'] = currentData['totalcases'] - baselineData['totalcases'];
                     currentData['changeactive'] = currentData['activecases'] - baselineData['activecases'];
