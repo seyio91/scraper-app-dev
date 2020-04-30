@@ -38,11 +38,11 @@ const getData = html => {
 
     $("table#custom1 > tbody > tr").each((index, elem)=>{
         const tdTags = $(elem).find("td");
-        let val = test.match(reg);
         summary['test'] = parseInt(val.join(""));
         if (index == 0){
             test = $(tdTags[1]).text().trim();
-            summary['test'] = parseInt(test.match(reg))
+            let val = test.match(reg);
+            summary['test'] = parseInt(val.join(""));
         } else if (index == 1){
             summary['totalcases'] = value;
             summary['activecases'] += value;
@@ -78,6 +78,7 @@ const getData = html => {
     });
 
 
+    // data to return
     return { summary, data }
 }
 
