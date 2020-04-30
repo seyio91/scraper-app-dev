@@ -10,7 +10,7 @@ async function scraper(){
         return getData(page)
     } catch (error) {
         // This should be later turned to a retry
-        console.error({error: error, message: `Error Download NCDC Page at ${moment()}`})
+        console.error({error: error, message: `Error Downloading NCDC Page at ${moment()}`})
     }
 }
 
@@ -40,9 +40,7 @@ const getData = html => {
         const tdTags = $(elem).find("td");
         let value = numParse($(tdTags[1]).text().trim());
         if (index == 0){
-            let test = $(tdTags[1]).text().trim();
-            let val = test.match(reg);
-            summary['test'] = parseInt(val.join(""));
+            summary['test'] = value;
         } else if (index == 1){
             summary['totalcases'] = value;
             summary['activecases'] += value;
@@ -84,8 +82,14 @@ const getData = html => {
 
 
 const numParse = (string) => {
-    let num = parseInt(string)
-    return isNaN(num) ? string : num
+    // check number received
+    if (isNaN(string)){
+        val = string.match(reg);
+        num = parseInt(val.join(""));
+    } else {
+        num = string
+    }
+    return parseInt(num)
 }
 
 // scraper().then(data => console.log(data));
