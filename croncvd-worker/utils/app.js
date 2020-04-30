@@ -36,6 +36,12 @@ async function main(){
             let changeActive = currentData['activecases'] - lastData['activecases'];
             let changeDischarged = currentData['discharged'] - lastData['discharged'];
             let changeDeaths = currentData['deaths'] - lastData['deaths'];
+
+            // check for change
+            baselineData['totalcases'] = currentData['totalcases'] < baselineData['totalcases'] ? currentData['totalcases'] : baselineData['totalcases'];
+            baselineData['activecases'] = currentData['activecases'] < baselineData['activecases'] ? currentData['activecases'] : baselineData['activecases'];
+            baselineData['discharged'] = currentData['discharged'] < baselineData['discharged'] ? currentData['discharged'] : baselineData['discharged'];
+            baselineData['deaths'] = currentData['deaths'] < baselineData['deaths'] ? currentData['deaths'] : baselineData['deaths'];
     
             // calculate new change if there is any
             if (changeTotal > 0 ||
@@ -45,12 +51,6 @@ async function main(){
                     // let System know there is a change for push updates later
                     dataChanges = true;
 
-                    // check for change
-                    currentData['totalcases'] = currentData['totalcases'] > baselineData['totalcases'] ? currentData['totalcases'] : baselineData['totalcases'];
-                    currentData['activecases'] = currentData['activecases'] > baselineData['activecases'] ? currentData['activecases'] : baselineData['activecases'];
-                    currentData['discharged'] = currentData['discharged'] > baselineData['discharged'] ? currentData['discharged'] : baselineData['discharged'];
-                    currentData['deaths'] = currentData['deaths'] > baselineData['deaths'] ? currentData['deaths'] : baselineData['deaths'];
-    
                     currentData['changetotal'] = currentData['totalcases'] - baselineData['totalcases'];
                     currentData['changeactive'] = currentData['activecases'] - baselineData['activecases'];
                     currentData['changedischarged'] = currentData['discharged'] - baselineData['discharged'];
