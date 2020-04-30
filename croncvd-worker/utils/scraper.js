@@ -78,7 +78,6 @@ const getData = html => {
     });
 
 
-    // data to return
     return { summary, data }
 }
 
