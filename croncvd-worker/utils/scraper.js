@@ -36,25 +36,37 @@ const getData = html => {
 
     const $ = cheerio.load(html);
 
-    $("table#custom1 > tbody > tr").each((index, elem)=>{
-        const tdTags = $(elem).find("td");
-        let value = numParse($(tdTags[1]).text().trim());
-        if (index == 0){
-            summary['test'] = value;
-        } else if (index == 1){
-            summary['totalcases'] = value;
-            summary['activecases'] += value;
-        } else if (index == 2){
-            summary['discharged'] = value;
-            summary['activecases'] -= value;
-        } else if (index == 3){
-            summary['deaths'] = value;
-            summary['activecases'] -= value;
-        }
-    })
+    // $("table#custom1 > tbody > tr").each((index, elem)=>{
+    //     const tdTags = $(elem).find("td");
+    //     let value = numParse($(tdTags[1]).text().trim());
+    //     if (index == 0){
+    //         summary['test'] = value;
+    //     } else if (index == 1){
+    //         summary['totalcases'] = value;
+    //         summary['activecases'] += value;
+    //     } else if (index == 2){
+    //         summary['discharged'] = value;
+    //         summary['activecases'] -= value;
+    //     } else if (index == 3){
+    //         summary['deaths'] = value;
+    //         summary['activecases'] -= value;
+    //     }
+    // })
+
+    const pageBlock = $("div.pcoded-content > .page-header > .page-block > .row");
+    const pagetag = $(pageBlock).find('span')
+    summary['test'] = numParse($(pagetag).text().trim());
 
 
-    $("table#custom3 > tbody > tr").each((index, element) => {
+    const rows = $("div.pcoded-content > .page-header > .row");
+    let spanTags = $(rows[0]).find('span');
+
+    summary['totalcases'] = numParse($(spanTags[0]).text().trim());
+    summary['activecases'] = numParse($(spanTags[1]).text().trim());
+    summary['discharged'] = numParse($(spanTags[2]).text().trim());
+    summary['deaths'] = numParse($(spanTags[3]).text().trim());
+
+    $("table#custom1 > tbody > tr").each((index, element) => {
 
         const tdTags = $(element).find("td");
         let name = $(tdTags[0]).text().trim()
@@ -78,6 +90,7 @@ const getData = html => {
 
     // data to return
     return { summary, data }
+    // return { summary }
 }
 
 
@@ -94,5 +107,5 @@ const numParse = (string) => {
 
 // scraper().then(data => console.log(data));
 
-
+// 
 module.exports = scraper;

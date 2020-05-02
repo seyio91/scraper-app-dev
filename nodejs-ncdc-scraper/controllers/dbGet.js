@@ -82,7 +82,7 @@ const dailyEvent = async( req, res ) => {
 // summary
 const getSummary = async(req, res) => {
     try {
-        let data = await client.get('lastSummary')
+        let data = await client.get('currentSummary')
         if (!data){
             hours = await dbQuery(`SELECT date FROM summary ORDER BY date DESC LIMIT 1`);
             lastTime = moment(hours.rows[0].date).format('YYYY-MM-DD');
