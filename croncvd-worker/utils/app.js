@@ -77,7 +77,7 @@ async function main(){
         summaryTotal['changedeaths'] = summaryTotal['deaths'] - lastSummary['deaths'];
     
         await redisSet('lastview', newView);
-        await redisSet('currentSummary', JSON.stringify(summaryTotal));
+        await redisSet('currentSummary', summaryTotal);
 
         
     

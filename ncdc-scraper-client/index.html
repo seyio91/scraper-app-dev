@@ -36,24 +36,22 @@
             <div class="col headinfo">
                 <div class="card card mx-auto shadow p-1 mb-1 rounded-lg">
                     <div class="card-body p-1">
-                        <h2 class="text-center">Nigeria COVID19 Statistics</h2>
-                        <div class="row">
-                            <div class="col-10">
-                                <div class="col-lg-10 col-md-12 col-sm-12 mx-auto">
-                                    <p class="text-center mainhead">
-                                         Visit the <a href="https://covid19.ncdc.gov.ng/" target="_blank">NCDC WEBSITE</a> for more COVID19 information. 
-                                    </p>
-                                </div>
+                        <div class="row block">
+                            <div class="col-12 ">
+                                <h1 class="text-center">Nigeria COVID-19 Stats</h1>
+                                <p class="text-center mainhead">
+                                    Visit the <a href="https://covid19.ncdc.gov.ng/" target="_blank">NCDC Site</a> for more info. 
+                               </p>
+                               <marquee class="mx-auto deaths font-weight-bold" width="90%" direction="left">Disclaimer!. Information compiled from the NCDC Site and values are sometimes reviewed and changed. Please Notify Seyi for any errors or feedback via twitter, email or whatsapp +26878514450. Thanks. </marquee>
                             </div>
-                            <div class="col-2 float-xl-right">
+                            <div class="col-1 float-xl-right testmain mr-2">
                                 <div class="twitter">
                                     <a href="https://twitter.com/intent/tweet?screen_name=seyio1187&ref_src=twsrc%5Etfw" target="_blank" class="btn btn-primary btn-sm"><img src="./images/Twitter_Social_Icon_Rounded_Square_Color.svg" alt="" id="twitterimg"><span class="font-weight-bold" id="iconimgtxt"> Tweet @</span></a>
                                 </div>
                                 <div class="mailto pt-1">
-                                    <a href="mailto:seyi_obaweya@yahoo.com" target="_blank" class="btn btn-danger btn-sm"><img src="./images/mail.svg" alt="" id="mailimg"><span class="font-weight-bold" id="iconimgtxt">Send Mail</span></a>
+                                    <a href="mailto:seyi_obaweya@yahoo.com" target="_blank" class="btn btn-danger btn-sm"><img src="./images/mail.svg" alt="" id="mailimg"><span class="font-weight-bold" id="iconimgtxt"> Mail Me</span></a>
                                 </div>
                             </div>
-                            <marquee class="mx-auto deaths font-weight-bold" width="80%" direction="left">Disclaimer!. Information compiled from the NCDC Site and values are sometimes reviewed and changed. Please Notify Seyi Obaweya on any errors or Feedback via twitter, email or whatsapp +26878514450. Thanks. </marquee>
                             <div class="col-12 col-xl-6 offset-xl-4" id="globalstats"></div>
                         </div>
                     </div>
@@ -69,34 +67,50 @@
                         <div style="font-size:13px; color:#999; margin-top:5px; text-align:center">Last updated: <span id="update-time"></span> </div>
                         <div id="maincounter-wrap">
                             <h1>Coronavirus Cases:</h1>
-                            <div class="maincounter-number" >
-                            <span style="color:rgba(0, 181, 204, 0.7)">0</span>
+                            <div class="row maincounter-number" style="color:rgba(0, 181, 204, 0.7)">
+                                <div class="col number">
+                                    <span>0</span>
+                                    <span class="receiverChat" style="border-bottom: 15px solid rgba(0, 181, 204, 0.7);"></span>
+                                    <span class="updates">0</span>
+                                </div>
                             </div>
                         </div>
                         <div id="maincounter-wrap">
-                            <h1>Deaths #:</h1>
-                            <div class="maincounter-number" style="color:rgb(207, 30, 30) ">
-                            <span>0</span>
+                            <h1>Deaths:</h1>
+                            <div class="row maincounter-number" style="color:rgb(207, 30, 30) ">
+                                <div class="col number">
+                                    <span>0</span>
+                                    <span class="receiverChat" style="border-bottom: 15px solid rgb(207, 30, 30);"></span>
+                                    <span class="updates">0</span>
+                                </div>
                             </div>
                         </div>
                         <div id="maincounter-wrap">
                             <h1>Recovered:</h1>
-                            <div class="maincounter-number" style="color:#8ACA2B ">
-                            <span>0</span>
+                            <div class="row maincounter-number" style="color:#8ACA2B ">
+                                <div class="col number">
+                                    <span>0</span>
+                                    <span class="receiverChat" style="border-bottom: 15px solid #8ACA2B;"></span>
+                                    <span class="updates">0</span>
+                                </div>
                             </div>
                         </div>
                         <div id="maincounter-wrap">
                             <h1>Tests:</h1>
                             <div class="maincounter-number">
-                            <span>0</span>
+                                <div class="col number">
+                                    <span>0</span>
+                                    <span class="receiverChat"></span>
+                                    <span class="updates">0</span>
+                                </div>
                             </div>
                         </div>
-                    <div style="margin-top:50px;"></div>
-                    </div>
+                        <div style="margin-top:50px;"></div>
+                        </div>
                   </div>
 
 
-                  <div class="card mx-auto shadow mb-5 rounded-lg" id="summary-card">
+                  <div class="card mx-auto shadow mb-5 rounded-lg">
 
                     <canvas id="myChart" class="analytics" style="display: none;"></canvas>
        
@@ -129,22 +143,24 @@
 
                     <div class="card-body tablebox">
                         <div class="main-title">
-                            <h1 class="card-title">Nigeria Covid19 Statistics</h1>
+                            <h1 class="card-title">Statistics By State</h1>
                         </div>
                         
                             <div class="row font-weight-bold pt-1 pb-2">
-                                <div class="col-sm-4 small">
+                                <div class="col-sm-4 small font-weight-bold pt-1">
                                     Total Recovery Rate:
                                     <div class="progress" id="recovery-progress">
+                                        <span class="percent">0 %</span>
                                         <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
                                       </div>
                                 </div>
-                                <div class="col-sm-4 small">Total Fatality:
+                                <div class="col-sm-4 small font-weight-bold pt-1">Total Fatality:
                                     <div class="progress" id="fatality-rate">
+                                        <span class="percent">0 %</span>
                                         <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
                                       </div>
                                 </div>
-                                <div class="col-sm-2">Total Cases: 
+                                <div class="col-sm-2 pt-1">Total Cases: 
                                     <span id="progress-totalcases" style="color:rgba(0, 181, 204, 0.7)">
                                     0
                                     </span>
