@@ -82,14 +82,14 @@ const dailyEvent = async( req, res ) => {
 // summary
 const getSummary = async(req, res) => {
     try {
-        let data = await client.get('currentSummary')
+        let data = await client.get('lastSummary')
         if (!data){
             hours = await dbQuery(`SELECT date FROM summary ORDER BY date DESC LIMIT 1`);
             lastTime = moment(hours.rows[0].date).format('YYYY-MM-DD');
             let lastQuery = `SELECT * FROM summary WHERE date = '${lastTime}' ORDER BY date;`
             const { rows } = await dbQuery(lastQuery);
             data = rows[0]
-            await client.set('currentSummary', JSON.stringify(data))
+            await client.set('lastSummary', JSON.stringify(data))
         } else {
             data = JSON.parse(data)
         }
