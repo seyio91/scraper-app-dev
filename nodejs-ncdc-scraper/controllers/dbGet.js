@@ -89,7 +89,7 @@ const getSummary = async(req, res) => {
             let lastQuery = `SELECT * FROM summary WHERE date = '${lastTime}' ORDER BY date;`
             const { rows } = await dbQuery(lastQuery);
             data = rows[0]
-            await client.set('lastSummary', JSON.stringify(data))
+            await client.set('currentSummary', JSON.stringify(data))
         } else {
             data = JSON.parse(data)
         }
