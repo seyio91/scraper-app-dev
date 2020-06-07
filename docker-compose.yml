@@ -1,0 +1,53 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres
+    env_file:
+      - compose.env
+    volumes: 
+      - ./db-ncdc-2905.sql:/docker-entrypoint-initdb.d/db-bak.sql
+    networks:
+      - test_network
+
+  app:
+    build:
+      context: ./nodejs-ncdc-scraper
+    depends_on:
+      - db
+      - cache
+    env_file:
+      - compose.env
+    networks:
+      - test_network
+
+  cache:
+    image: redis
+    networks:
+      - test_network
+
+  worker:
+    build:
+      context: ./croncvd-worker
+    depends_on:
+      - db
+      - cache
+    env_file:
+      - compose.env
+    networks:
+      - test_network
+
+  frontend:
+    build:
+      context: ./ncdc-scraper-client
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    environment: 
+      - PROXY_ADDRESS=app
+    networks:
+      - test_network
+    
+networks:
+  test_network:
