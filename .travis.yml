@@ -1,14 +1,21 @@
 sudo: required
 services:
   - docker
-
+env:
+  global:
+    - DOCKER_REPO_APP=seyio/scraper-app
+    - DOCKER_REPO_WORKER=seyio/scraper-app
+    - DOCKER_REPO_PROXY=seyio/scraper-proxy
 script:
-    - docker build -t seyio/scraper-app -f ./nodejs-ncdc-scraper/Dockerfile ./nodejs-ncdc-scraper
-    - docker build -t seyio/scraper-worker -f ./croncvd-worker/Dockerfile ./croncvd-worker
-    - docker build -t seyio/scraper-proxy -f ./ncdc-scraper-client/Dockerfile ./ncdc-scraper-client
+    - docker build -t $DOCKER_REPO_APP -f ./nodejs-ncdc-scraper/Dockerfile ./nodejs-ncdc-scraper
+    - docker build -t $DOCKER_REPO_WORKER -f ./croncvd-worker/Dockerfile ./croncvd-worker
+    - docker build -t $DOCKER_REPO_PROXY -f ./ncdc-scraper-client/Dockerfile ./ncdc-scraper-client
 
 after-success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push seyio/scraper-app
-  - docker push seyio/scraper-worker
-  - docker push seyio/scraper-proxy
+
+deploy:
+  provider: script
+  script: bash docker-push.sh
+  on:
+    branch: master
