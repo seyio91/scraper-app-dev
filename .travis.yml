@@ -4,7 +4,7 @@ services:
 env:
   global:
     - DOCKER_REPO_APP=seyio/scraper-app
-    - DOCKER_REPO_WORKER=seyio/scraper-app
+    - DOCKER_REPO_WORKER=seyio/scraper-worker
     - DOCKER_REPO_PROXY=seyio/scraper-proxy
 script:
     - docker build -t $DOCKER_REPO_APP -f ./nodejs-ncdc-scraper/Dockerfile ./nodejs-ncdc-scraper
