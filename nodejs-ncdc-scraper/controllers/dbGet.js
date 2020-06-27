@@ -56,27 +56,6 @@ const dailyEvent = async( req, res ) => {
     }
 }
 
-// const dailyEvent = async(req, res) => {
-//     try {
-//         let data = await client.get('lastview')
-//         if (!data){
-//             hours = await dbQuery(`SELECT date FROM ticks ORDER BY date DESC LIMIT 1`);
-//             lastTime = moment(hours.rows[0].date).format('YYYY-MM-DD');
-//             let lastQuery = `SELECT * FROM ticks WHERE date = '${lastTime}' ORDER BY date;`
-//             const { rows } = await dbQuery(lastQuery);
-//             data = rows;
-//             await client.set('lastview', JSON.stringify(rows))
-//         } else {
-//             data = JSON.parse(data)
-//         }
-//         successMsg.data = data
-//         return res.status(status.success).json(successMsg)
-        
-//     } catch (error) {
-//         errorMsg.error = error
-//         res.status(status.error).json(errorMsg)
-//     }
-// }
 
 
 // summary
@@ -143,7 +122,7 @@ const getEventDay = async( req, res ) => {
 const dateParse = (arrayObj) => {
     weeklyData = {};
     arrayObj.forEach(data => {
-        week = moment(data.date).week();
+        week = moment(data.date).month();
         if(!weeklyData[week]){
             weeklyData[week] = data
         } else {

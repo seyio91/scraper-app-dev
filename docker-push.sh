@@ -11,11 +11,9 @@ TARGET_IMAGE_LATEST_WORKER="${SOURCE_IMAGE_WORKER}:latest"
 TARGET_IMAGE_LATEST_PROXY="${SOURCE_IMAGE_PROXY}:latest"
 
 TIMESTAMP=$(date '+%Y%m%d%H%M%S')
-# using datetime as part of a version for versioned image
+
 VERSION="${TIMESTAMP}-${TRAVIS_COMMIT}"
-# using specific version as well
-# it is useful if you want to reference this particular version
-# in additional commands like deployment of new Elasticbeanstalk version
+
 TARGET_IMAGE_VERSIONED_APP="${SOURCE_IMAGE_APP}:${VERSION}"
 TARGET_IMAGE_VERSIONED_WORKER="${SOURCE_IMAGE_WORKER}:${VERSION}"
 TARGET_IMAGE_VERSIONED_PROXY="${SOURCE_IMAGE_PROXY}:${VERSION}"
