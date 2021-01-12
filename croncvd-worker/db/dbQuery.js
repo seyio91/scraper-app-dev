@@ -9,6 +9,7 @@ const dbQuery = (queryText, params) => {
                 })
                 .catch((err)=>{
                     reject(err);
+                    // throw err;
                 })
         })
     };

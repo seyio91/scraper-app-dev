@@ -26,7 +26,7 @@ const getTimeLine = async (req, res) => {
 }
 
 const healthCheck = async(req, res) => {
-    successMsg.data = { status: "ok" }
+    successMsg.data = { status: "success" }
     return res.status(status.success).json(successMsg);
 }
 
